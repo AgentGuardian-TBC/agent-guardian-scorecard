@@ -1,0 +1,263 @@
+:root {
+  --bg: #0e1116;
+  --card: #171b22;
+  --ink: #f3f1ea;
+  --muted: #b7b3a8;
+  --line: #2a303a;
+  --accent: #e8c36a;
+  --accent-ink: #1a1406;
+  --good: #8fcaa0;
+  --warn: #e0a36a;
+  --bad: #d97a6c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header,
+main,
+footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+header {
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+main {
+  flex: 1;
+  padding: 40px 20px;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.eyebrow {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: var(--accent);
+  margin: 0 0 12px;
+}
+
+h1,
+h2 {
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 34px;
+  line-height: 1.15;
+  margin: 0 0 14px;
+}
+
+h2 {
+  font-size: 24px;
+  margin: 0 0 10px;
+}
+
+p {
+  color: var(--muted);
+}
+
+.lead {
+  font-size: 18px;
+  color: var(--ink);
+}
+
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: 0;
+  padding: 14px 22px;
+  font-size: 16px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  margin-left: 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 22px;
+  margin: 18px 0;
+  border-radius: 8px;
+}
+
+.bullets {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.bullets li {
+  margin: 8px 0;
+  color: var(--muted);
+}
+
+.q {
+  margin: 0 0 18px;
+}
+
+.q p {
+  color: var(--ink);
+  margin: 0 0 10px;
+  font-size: 17px;
+}
+
+.scale {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.scale label {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.scale label:hover {
+  background-color: var(--line);
+}
+
+.scale input {
+  margin-right: 4px;
+}
+
+.field {
+  display: block;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+  margin: 12px 0 6px;
+  color: var(--muted);
+}
+
+input[type="email"],
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  background: #10141a;
+  color: var(--ink);
+  font-size: 16px;
+  font-family: inherit;
+}
+
+input[type="email"]:disabled,
+input[type="text"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.micro {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+}
+
+.score {
+  font-size: 56px;
+  margin: 8px 0;
+  color: var(--accent);
+  font-family: "Monaco", "Courier New", monospace;
+  font-weight: 700;
+}
+
+footer {
+  padding: 40px 20px 60px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  color: #7d7a72;
+  border-top: 1px solid var(--line);
+  margin-top: 40px;
+}
+
+.cat {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  padding: 8px 0;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px;
+}
+
+.cat:last-child {
+  border-bottom: none;
+}
+
+.cat span:last-child {
+  font-family: "Monaco", "Courier New", monospace;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.cat.weak {
+  color: var(--bad);
+}
+
+.cat.weak span:last-child {
+  color: var(--bad);
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  .score {
+    font-size: 42px;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+             }
