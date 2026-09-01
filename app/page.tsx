@@ -11,7 +11,7 @@ const QUESTIONS = [
   ["Caps", "If an agent or script starts looping, something stops it before it burns the month."],
   ["Caps", "I can kill or pause a runaway job in under two minutes without logging into five dashboards."],
   ["Routing", "I use a cheap/fast model by default and only escalate to a frontier model when the task actually needs it."],
-["Routing", "I have a rule for what \\"good enough\\" means, so I don't re-run the same prompt on a more expensive model \\"just to see.\\""],
+["Routing", "I have a rule for what \\good enough\\ means, so I don't re-run the same prompt on a more expensive model \\just to see.\\"],
   ["Routing", "I cache or reuse answers for repeated tasks instead of paying full price every time."],
   ["Agent waste", "My agents have a max number of steps, tool calls, or retries before they must stop or ask me."],
   ["Agent waste", "I strip context (old chat, huge files, unused tools) before sending a job, instead of pasting the whole pile in."],
