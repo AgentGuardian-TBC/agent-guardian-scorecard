@@ -121,6 +121,93 @@ export default function Scorecard() {
 
   return (
     <div className="container">
+      <header>};
+
+export default function Scorecard() {
+  const [stage, setStage] = useState('land');
+  const [answers, setAnswers] = useState<(number | null)[]>(Array(15).fill(null));
+  const [currentQ, setCurrentQ] = useState(0);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleAnswer = (value: number) => {
+    const newAnswers = [...answers];
+    newAnswers[currentQ] = value;
+    setAnswers(newAnswers);
+  };
+
+  const handleNextQuestion = () => {
+    if (answers[currentQ] === null) {
+      alert('Pick 1 through 5. 1 = never / not true. 5 = always / very true.');
+      return;
+    }
+    if (currentQ < 14) {
+      setCurrentQ(currentQ + 1);
+    } else {
+      setStage('gate');
+    }
+  };
+
+  const handleShowResults = async () => {
+    if (!email.trim() || !email.includes('@')) {
+      alert('Need a real email to unlock the score.');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const res = await fetch('/api/scorecard-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          email,
+          answers,
+          ts: new Date().toISOString()
+        })
+      });
+
+      if (!res.ok) throw new Error('Failed to save lead');
+    } catch (err) {
+      console.error('Lead capture error:', err);
+    }
+
+    setLoading(false);
+    setStage('results');
+  };
+
+  const avg = (arr: number[]) => arr.reduce((a, b) => a + b, 0) / arr.length;
+  const cats = {
+    Visibility: answers.slice(0, 3) as number[],
+    Caps: answers.slice(3, 6) as number[],
+    Routing: answers.slice(6, 9) as number[],
+    "Agent waste": answers.slice(9, 12) as number[],
+    Habits: answers.slice(12, 15) as number[]
+  };
+  
+  const scores: Record<string, number> = {};
+  Object.keys(cats).forEach(k => {
+    scores[k] = avg(cats[k]);
+  });
+  
+  const overall = avg(answers as number[]);
+  const order = ["Caps", "Agent waste", "Visibility", "Routing", "Habits"];
+  let weakest = order[0];
+  order.forEach(k => {
+    if (scores[k] < scores[weakest]) weakest = k;
+  });
+
+  const getBand = (score: number) => {
+    if (score <= 2.4) return BANDS.low;
+    if (score <= 3.4) return BANDS.mid_low;
+    if (score <= 4.4) return BANDS.mid_high;
+    return BANDS.high;
+  };
+
+  return (
+    <div className="container">
       <header>ts and occasional product updates for Agent Guardian. Unsubscribe anytime.</p>
           </section>
         )}
